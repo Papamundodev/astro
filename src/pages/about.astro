@@ -1,10 +1,6 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
-
-
-const pageTitle = "About us";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle  = "About us";
 const identity = {
   firstName: "Sarah",
   country: "Canada",
@@ -16,25 +12,19 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"]
 const happy = false;
 const finished = false;
 const goal = 3;
-const skillColor = "pink    ";
----
+const skillColor = "red";
 
-<html>   
-    <head>
-        <title>{pageTitle}</title>
-    </head>
-    <style define:vars={{skillColor}}>
-        h1 {    
-          color: var(--skillColor);
-          font-size: 4rem;
-        }
-        .skill {
-          color: rgb(106, 13, 135);
-        }
-      </style>
-    <body>
-        <Navigation />
-        <h1>{pageTitle}</h1>
+---
+<style is:global define:vars={{skillColor}}>
+  h1 {    
+    color: var(--skillColor);
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+  }
+</style>
+<BaseLayout pageTitle={pageTitle}>
 
         <p>Here are a few facts about me:</p>
         <ul>
@@ -53,6 +43,4 @@ const skillColor = "pink    ";
         <ul>
         {skills.map((skill) => <li class="skill">{skill}</li>)}
         </ul>
-        <Footer />
-    </body>
-</html>
+</BaseLayout>

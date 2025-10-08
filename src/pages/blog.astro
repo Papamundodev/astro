@@ -1,20 +1,9 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const  pageTitle = "Blog";
 ---
-<html>
-
-    <head>
-        <title>About</title>
-    </head>
-    <body>
-        <Navigation />
-        <h1>My blog</h1>
-
-        <h2>Posts</h2>
-        <a href="/posts/post-1">Post 1</a>
-        <a href="/posts/post-2">Post 2</a>
-        <Footer />
-    </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+    <h2>Posts</h2>
+    <a href="/posts/post-1">Post 1</a>
+    <a href="/posts/post-2">Post 2</a>
+</BaseLayout>
