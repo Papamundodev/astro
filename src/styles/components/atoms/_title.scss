@@ -1,0 +1,41 @@
+@use "../../design-tokens/fonts" as *;
+@use "../../design-tokens/colors" as *;
+@use "../../utilities/container-wrapper" as *;
+/********* Titles *********/
+
+@mixin text-heading-1 {
+  font-family: $heading-font;
+  font-size: $font-size-lg;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-700;
+  letter-spacing: $letter-spacing-heading;
+  text-wrap: balance;
+  text-transform: capitalize;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block-end: $spacer-md;
+  padding-block-start: $spacer-md;
+}
+
+.title-gradient {
+  background-image: $linear-gradient-color;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  width: fit-content;
+}
+
+.logo {
+    @include text-heading-1;
+}

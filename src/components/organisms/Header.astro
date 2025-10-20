@@ -1,0 +1,26 @@
+---
+import Menu from '../atoms/Menu.astro';
+import Navigation from '../molecules/Navigation.astro';
+import NavigationMobile from '../molecules/NavigationMobile.astro';
+import ThemeIcon from '../ThemeIcon.astro';
+import Logo from '../atoms/Logo.astro';
+---
+<header>
+    <nav class="header-nav">
+        <div class="logo-container">
+            <Logo />
+        </div>
+        <div class="nav-container">
+            <NavigationMobile />
+            <Navigation />
+        </div>
+        <div class="menu-container">
+            <div class="theme-container">
+                <ThemeIcon />
+            </div>
+            <button class="burger-container" popovertarget="navmenu-header-mobile" id="theme-navbar-toggler">  
+                <Menu />
+            </button>
+        </div>
+    </nav>
+</header>

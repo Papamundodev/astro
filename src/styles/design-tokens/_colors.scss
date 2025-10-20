@@ -1,0 +1,229 @@
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
+  /* Colors */
+  :root {
+    /* black and white */
+    --color-scheme: light dark;
+    --white-color: #f4fafd;
+    --black-color: #040b14;
+    --background-color: var(--white-color);
+    --contrast-color: var(--white-color);
+    --default-color: var(--black-color);
+    --gray-color: hsl(288, 20%, 85%);
+  
+    /* primary colors */
+    --primary-color: hsl(288, 70%, 38%); // svg background
+    --primary-color-surface-1: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--primary-color) 5%
+    );
+    --primary-color-surface-2: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--primary-color) 10%
+    );
+    --primary-color-surface-3: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--primary-color) 25%
+    );
+  
+    /* secondary colors */
+    --secondary-color: hsl(213, 70%, 30%); // svg background
+    --secondary-color-surface-1: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--secondary-color) 5%
+    );
+    --secondary-color-surface-2: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--secondary-color) 10%
+    );
+    --secondary-color-surface-3: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--secondary-color) 25%
+    );
+  
+    /* tertiary colors */
+    --tertiary-color: hsl(319, 70%, 38%); // svg background
+    --tertiary-color-surface-1: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--tertiary-color) 5%
+    );
+    --tertiary-color-surface-2: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--tertiary-color) 10%
+    );
+    --tertiary-color-surface-3: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--tertiary-color) 25%
+    );
+  
+    /*action colors*/
+    --link-color: var(--primary-color);
+    --link-hover-color: var(--secondary-color);
+    --link-active-color: var(--tertiary-color);
+    --gradient-1: hsl(288, 90%, 45%);
+    --gradient-2: hsl(213, 90%, 45%);
+    --gradient-3: hsl(319, 90%, 45%);
+    --conic-gradient-color: conic-gradient(
+      from var(--angle),
+      var(--gradient-1),
+      var(--gradient-2),
+      var(--gradient-3)
+    );
+    --linear-gradient-color: linear-gradient(
+      to right,
+      var(--gradient-1),
+      var(--gradient-2),
+      var(--gradient-3)
+    );
+  }
+  
+  .dark-theme {
+    /* black and white */
+    --background-color: var(--black-color);
+    --contrast-color: var(--white-color);
+    --default-color: var(--white-color);
+    --gray-color: hsl(288, 25%, 15%);
+  
+    /* primary colors */
+    --primary-color: hsl(288, 70%, 62%); // svg background
+    --primary-color-surface-1: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--primary-color) 5%
+    );
+    --primary-color-surface-2: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--primary-color) 10%
+    );
+    --primary-color-surface-3: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--primary-color) 25%
+    );
+  
+    /* secondary colors */
+    --secondary-color: hsl(213, 70%, 62%); // svg background
+    --secondary-color-surface-1: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--secondary-color) 5%
+    );
+    --secondary-color-surface-2: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--secondary-color) 10%
+    );
+    --secondary-color-surface-3: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--secondary-color) 25%
+    );
+  
+    /* tertiary colors */
+    --tertiary-color: hsl(319, 70%, 62%); // svg background
+    --tertiary-color-surface-1: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--tertiary-color) 5%
+    );
+    --tertiary-color-surface-2: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--tertiary-color) 10%
+    );
+    --tertiary-color-surface-3: color-mix(
+      in srgb,
+      var(--background-color),
+      var(--tertiary-color) 25%
+    );
+  
+    /*action colors*/
+    --link-color: var(--primary-color);
+    --link-hover-color: var(--secondary-color);
+    --link-active-color: var(--tertiary-color);
+  
+    --gradient-1: hsl(288, 90%, 52%);
+    --gradient-2: hsl(213, 90%, 52%);
+    --gradient-3: hsl(319, 90%, 52%);
+  }
+  
+  $black-color: var(--black-color);
+  $white-color: var(--white-color);
+  $background-color: var(--background-color);
+  $contrast-color: var(--contrast-color);
+  $default-color: var(--default-color);
+  $heading-color: var(--heading-color);
+  $primary-color: var(--primary-color);
+  $primary-color-surface-1: var(--primary-color-surface-1);
+  $primary-color-surface-2: var(--primary-color-surface-2);
+  $primary-color-surface-3: var(--primary-color-surface-3);
+  $secondary-color: var(--secondary-color);
+  $secondary-color-surface-1: var(--secondary-color-surface-1);
+  $secondary-color-surface-2: var(--secondary-color-surface-2);
+  $secondary-color-surface-3: var(--secondary-color-surface-3);
+  $tertiary-color: var(--tertiary-color);
+  $tertiary-color-surface-1: var(--tertiary-color-surface-1);
+  $tertiary-color-surface-2: var(--tertiary-color-surface-2);
+  $tertiary-color-surface-3: var(--tertiary-color-surface-3);
+  $gray-color: var(--gray-color);
+  $link-color: var(--link-color);
+  $link-hover-color: var(--link-hover-color);
+  $link-active-color: var(--link-active-color);
+  $conic-gradient-color: var(--conic-gradient-color);
+  $linear-gradient-color: var(--linear-gradient-color);
+  $gradient-1: var(--gradient-1);
+  $gradient-2: var(--gradient-2);
+  $gradient-3: var(--gradient-3);
+  
+  $colors: (
+    "background-color": $background-color,
+    "contrast-color": $contrast-color,
+    "default-color": $default-color,
+    "heading-color": $heading-color,
+    "primary-color": $primary-color,
+    "primary-color-surface-1": $primary-color-surface-1,
+    "primary-color-surface-2": $primary-color-surface-2,
+    "primary-color-surface-3": $primary-color-surface-3,
+    "secondary-color": $secondary-color,
+    "secondary-color-surface-1": $secondary-color-surface-1,
+    "secondary-color-surface-2": $secondary-color-surface-2,
+    "secondary-color-surface-3": $secondary-color-surface-3,
+    "tertiary-color": $tertiary-color,
+    "tertiary-color-surface-1": $tertiary-color-surface-1,
+    "tertiary-color-surface-2": $tertiary-color-surface-2,
+    "tertiary-color-surface-3": $tertiary-color-surface-3,
+    "gray-color": $gray-color,
+    "link-color": $link-color,
+    "link-hover-color": $link-hover-color,
+    "link-active-color": $link-active-color,
+    "conic-gradient-color": $conic-gradient-color,
+    "linear-gradient-color": $linear-gradient-color,
+    "gradient-1": $gradient-1,
+    "gradient-2": $gradient-2,
+    "gradient-3": $gradient-3,
+  );
+  
+  @each $key, $value in $colors {
+    .#{$key} {
+      color: $value;
+    }
+  }
+  @each $key, $value in $colors {
+    .bg-#{$key} {
+      background-color: $value;
+    }
+  }

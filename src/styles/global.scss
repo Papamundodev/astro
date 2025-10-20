@@ -1,0 +1,308 @@
+@use './design-tokens/colors' as *;
+@use './design-tokens/_fonts' as *;
+@use './components/atoms/nav-items' as *;
+@use './components/atoms/title' as *;
+@use './components/atoms/burger' as *;
+@use './components/atoms/button' as *;
+@use './components/organisms/header' as *;
+@use './utilities/container-wrapper' as *;
+@use './plugins/theme-light-dark' as *;
+
+
+
+body {
+  background-color: $background-color;
+  font-family: sans-serif;
+  color: $default-color;
+  margin: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.animation-container {
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  position: relative;
+  gap: 50px;
+  height: 250vh;
+    div {
+      width: 50vw;
+      height: 150px;
+      background-color: $primary-color;
+      position: sticky;
+      inset-block-start: 50px;
+      color: $contrast-color;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      @include text-heading-1;
+    }
+}
+
+.animation-2-container {
+  display: grid;
+  grid-template-areas: 
+  "pack-container pack-container pack-container"
+  "item-1 item-3 item-5"
+  "item-7 item-8 item-9";
+  margin-block-end: 100px;
+    .item {
+      margin: auto;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;  
+      border: 3px solid $default-color ;
+    }
+    .item-2, .item-4, .item-6 {
+      display: none;
+    }
+}
+
+.pack-container {
+  grid-area: pack-container;
+}
+
+.item-1 {
+  grid-area: item-1;
+}
+
+.item-2 {
+  grid-area: item-2;
+}
+
+.item-3 {
+  grid-area: item-3;
+}
+
+.item-4 {
+  grid-area: item-4;
+}
+
+.item-5 {
+  grid-area: item-5;
+}
+
+.item-6 {
+  grid-area: item-6;
+}
+
+.item-7 {
+  grid-area: item-7;
+}
+
+.item-8 {
+  grid-area: item-8;
+}
+
+
+.item-9 {
+  grid-area: item-9;
+}
+
+
+
+.pack-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  .pack-premium-container, .pack-basic-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $default-color;
+  } 
+}
+
+.pack-basic-container:hover {
+  background-color: $secondary-color;
+  color: $contrast-color;
+  cursor: pointer;
+}
+
+.pack-premium-container:hover {
+  background-color: $primary-color;
+  color: $contrast-color;
+  cursor: pointer;
+}
+
+.pack-container:has(.pack-basic-container:hover) ~ .item.basic-item {
+  background-color: red;
+}
+
+.pack-container:has(.pack-premium-container:hover) ~ .item.premium-item {
+  background-color: red;
+}
+
+.animation-2-container:has(.pack-basic-container:hover) {
+  grid-template-areas: 
+    "pack-container pack-container pack-container"
+    "item-1 item-3 item-5"
+    "item-7 item-8 item-9";
+  .item-2, .item-4, .item-6 {
+    display: none;
+  }
+}
+
+.animation-2-container:has(.pack-premium-container:hover){
+  grid-template-areas: 
+  "pack-container pack-container pack-container"
+  "item-2 item-4 item-6"
+  "item-7 item-8 item-9";
+  .item-1, .item-3, .item-5 {
+    display: none;
+  }
+  .item-2, .item-4, .item-6 {
+    display: block;
+  }
+}
+
+.item{
+  transition: all 0.5s ease-in-out;
+}
+
+.slides {
+  height: 500vh;
+  position: relative;
+  transform-style: preserve-3d;
+  div{
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    &::after{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: $secondary-color;
+      border-radius: 50%;
+      border: 3px solid $default-color ;
+    }
+  }
+}
+
+.slides div:nth-child(1) {
+  
+  background-color: $primary-color;
+  &::after{
+    left: 120px;
+  }
+}
+
+.slides div:nth-child(2) {
+  &::after{
+    left: 240px;
+    transform-style: preserve-3d;
+    z-index: -10;
+    position: relative;
+    transform: translateZ(-1px) scale(2.2);
+  }
+}
+
+.slides div:nth-child(3) {
+  &::after{
+    left: 360px;
+    transform: translateZ(-.5px) scale(1.2);
+  }
+}
+
+.slides div:nth-child(4) {
+  &::after{
+    left: 480px;
+  }
+}
+
+.slides div:nth-child(5) {
+  &::after{
+    left: 600px;
+  }
+}
+
+.slide-header {
+  background-image: url('/images/background.webp'); // Note the leading slash
+  background-size: cover;
+  background-position: bottom;
+  padding: $spacer-vi-sm;
+  min-height: 70vh;
+  .slide-title {
+    text-align: center;
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-700;
+    letter-spacing: $letter-spacing-heading;
+    text-transform: uppercase;
+    color: $contrast-color;
+  }
+}
+
+.section-container-wrapper {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.section-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: $default-color;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .section1, .section2 {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .section1::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url('/images/background.jpg') top center no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px) scale(2.2);
+    filter: blur(2px);
+  }
+  .section2 {
+    background-color: $primary-color;
+  }
+  .text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $contrast-color;
+    font-size: $spacer-vi-xxl;
+    color: $contrast-color;
+    text-shadow: 2px 2px 5px $primary-color,
+    5px 5px 70px  $primary-color-surface-3;
+    transform: scale(1,1.1) translate(-50%, -50%);
+    text-align: center;
+  }
+}

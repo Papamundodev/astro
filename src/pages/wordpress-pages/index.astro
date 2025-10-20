@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+
+const response = await fetch("http://move.local/wp-json/wp/v2/pages");
+const wordpressPosts = await response.json();
+const pageTitle = "Wordpress";
+---
+<BaseLayout pageTitle={pageTitle}>
+
+  <div class="flex-center"  >
+     {wordpressPosts.map((wordpressPost: any) => (
+       <p><a href={`/wordpress-pages/${wordpressPost.slug}`}>{wordpressPost.title.rendered}</a></p>
+     ))}
+  </div>
+</BaseLayout>

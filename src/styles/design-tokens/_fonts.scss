@@ -1,0 +1,107 @@
+/*
+See post on fluid typo in my blog.
+*/
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+    font-weight: 100 900;
+    font-display: swap;
+    font-stretch: 100%;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Ashemore";
+    src: url("/fonts/AshemoreRegBold.ttf") format("truetype");
+    font-weight: bold;
+    font-display: swap;
+    font-stretch: 100%;
+    font-style: normal;
+  }
+
+  
+  /********* Fonts *********/
+  
+  /* font family */
+  
+  $text-font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  $heading-font: "Ashemore", system-ui, -apple-system, "Segoe UI", sans-serif;
+  $fonts: (
+    "text": $text-font,
+    "heading": $heading-font,
+  );
+  
+  @each $key, $value in $fonts {
+    .#{$key}-font {
+      font-family: $value;
+    }
+  }
+  
+  /* font size */
+  $font-size-xs: clamp(0.625rem, 0.5875rem + 0.1875vi, 0.8125rem);
+  $font-size-sm: clamp(0.8125rem, 0.7625rem + 0.25vi, 1rem);
+  $font-size-default: clamp(1rem, 0.95rem + 0.3125vi, 1.25rem);
+  $font-size-md: clamp(1.5625rem, 1.4844rem + 0.3906vi, 1.9531rem);
+  $font-size-lg: clamp(1.9531rem, 1.8555rem + 0.4883vi, 2.4414rem);
+  $font-size-xl: clamp(2.4414rem, 2.3193rem + 0.6104vi, 3.0518rem);
+  $font-size-xxl: clamp(3.0518rem, 2.8992rem + 0.7629vi, 3.8147rem);
+  $font-size-bg: clamp(4.7684rem, 4.53rem + 1.1921vi, 5.9605rem);
+  
+  $nav-font-size: clamp(0.9rem, 0.75rem + 0.3vi, 1.3rem);
+  $nav-font-size-mobile: 1.3rem;
+  
+  $font-sizes: (
+    "xs": $font-size-xs,
+    "sm": $font-size-sm,
+    "default": $font-size-default,
+    "md": $font-size-md,
+    "lg": $font-size-lg,
+    "xl": $font-size-xl,
+    "xxl": $font-size-xxl,
+    "big": $font-size-bg,
+  );
+  
+  @each $key, $value in $font-sizes {
+    .fs-#{$key} {
+      font-size: $value;
+    }
+  }
+  
+  /* ------- Font Weight Test ------- */
+  $font-weight-100: 100;
+  $font-weight-200: 200;
+  $font-weight-300: 300;
+  $font-weight-400: 400;
+  $font-weight-500: 500;
+  $font-weight-600: 600;
+  $font-weight-700: 700;
+  $font-weight-800: 800;
+  $font-weight-900: 900;
+  
+  $font-weights: (
+    "100": $font-weight-100,
+    "200": $font-weight-200,
+    "300": $font-weight-300,
+    "400": $font-weight-400,
+    "500": $font-weight-500,
+    "600": $font-weight-600,
+    "700": $font-weight-700,
+    "800": $font-weight-800,
+    "900": $font-weight-900,
+    "default": $font-weight-400,
+  );
+  
+  @each $key, $value in $font-weights {
+    .fw-#{$key} {
+      font-weight: $value;
+    }
+  }
+  
+  /* line height */
+  $line-height-heading: 1.1;
+  $line-height-paragraph: 1.6;
+  
+  /* letter spacing */
+  $letter-spacing-heading: 0.02em;
+  $letter-spacing-paragraph: 0.04em;

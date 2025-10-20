@@ -1,0 +1,79 @@
+@use "../../design-tokens/colors" as *;
+@use "../../utilities/container-wrapper" as *;
+@use "../../design-tokens/_fonts" as *;
+
+
+.nav-menu-item, .megamenu-services-button {
+  margin-block-end: $spacer-vi-sm;
+  list-style: none;
+  background-color: $primary-color;
+  position: relative;
+  overflow: hidden;
+  button, a{
+    padding: .5em 1em;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    font-size: $font-size-default;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: $contrast-color;
+    text-decoration: none;
+    position: relative;
+    z-index: 10;
+  }
+  &:hover {
+    button, a{
+      color: $primary-color;
+    }
+  }
+}
+
+.navmenu navmenu-mobile{
+  .nav-menu-item, .megamenu-services-button{
+    margin-block-end: $spacer-vi-md;
+  }
+}
+
+
+.megamenu-services-button{
+  a, button{
+      background-color: transparent;
+      border: none;
+
+  }
+}
+
+
+.nav-menu-item {
+  .hover-bg {
+    --tw-translate-x: -70%;
+    --tw-translate-y: -70%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+    transform-origin: 50% 50%;
+    inset-inline-start: 50%;
+    top: 50%;
+    inset-inline-start: var(--creative-hover-left);
+    top: var(--creative-hover-top);
+    z-index: 5;
+    height: calc($spacer-vi-sm * 0);
+    width: calc($spacer-vi-sm * 0);
+    border-radius: 3.40282e38px;
+    transition: width .6s, height .6s;
+    display: block;
+    position: absolute;
+    background-color: yellow;
+  }
+}
+.nav-menu-item:hover {
+  .hover-bg {
+    width: 40em;
+    height: 40em;
+    background-color: yellow;
+  }
+}
+
+

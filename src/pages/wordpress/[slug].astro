@@ -1,0 +1,35 @@
+---
+import { Debug } from 'astro:components';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// The getStaticPaths() function is required for static generation
+// This fetches all posts at build time and generates static pages
+export async function getStaticPaths() {
+  const paths = [];
+  
+  // Try to fetch WordPress posts first
+  try {
+    let data = await fetch("http://move.local/wp-json/wp/v2/posts");
+    let posts = await data.json();
+
+    if (posts && posts.length > 0) {
+      paths.push(...posts.map((post: any) => ({
+        params: { slug: post.slug },
+        props: { post: post },
+      })));
+    }
+  } catch (error) {
+    console.log('Failed to fetch WordPress posts:', error);
+  }
+  return paths;
+}
+
+// Get the post data from props (passed from getStaticPaths)
+const { post } = Astro.props as { post: any };
+const { slug } = Astro.params;
+---
+<BaseLayout pageTitle={post.title.rendered}>
+    <article>
+    <Fragment set:html={post.content.rendered} />
+  </article>
+</BaseLayout>

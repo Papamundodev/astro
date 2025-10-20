@@ -1,0 +1,91 @@
+---
+import { Debug } from 'astro:components';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// The getStaticPaths() function is required for static generation
+// This fetches all posts at build time and generates static pages
+export async function getStaticPaths() {
+  const paths = [];
+  
+  // Try to fetch WordPress posts first
+  try {
+    let data = await fetch("http://move.local/wp-json/wp/v2/pages");
+    let posts = await data.json();
+
+    if (posts && posts.length > 0) {
+      paths.push(...posts.map((post: any) => ({
+        params: { slug: post.slug },
+        props: { post: post },
+      })));
+    }
+  } catch (error) {
+    console.log('Failed to fetch WordPress posts:', error);
+  }
+  return paths;
+}
+
+// Get the post data from props (passed from getStaticPaths)
+const { post } = Astro.props as { post: any };
+const { slug } = Astro.params;
+---
+<BaseLayout pageTitle={post.title.rendered}>
+    <article>
+    <Fragment set:html={post.content.rendered} />
+  </article>
+
+  <div class="animation-container">
+    <div><p>1. Branding Design.</p></div>
+    <div><p>2. Illustration.</p></div>
+    <div><p>3. Web Design.</p></div>
+    <div><p>4. Animation.</p></div>
+    <div><p>5. SEO.</p></div>
+    <div><p>6. Content Writing.</p></div>
+</div>  
+
+
+<div class="animation-2-container">
+  <div class="pack-container">
+    <div class="pack-basic-container">
+      <h3>Pack basic</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+    </div>
+    
+    <div class="pack-premium-container">
+      <h3>Pack premium</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+    </div>
+  </div>
+  <div class="item item-1 basic-item"><p>1. Branding Design.</p></div>
+  <div class="item item-2 premium-item"><p>2. Illustration.</p></div>
+  <div class="item item-3 basic-item"><p>3. Web Design.</p></div>
+  <div class="item item-4 premium-item"><p>4. Animation.</p></div>
+  <div class="item item-5 basic-item"><p>5. SEO.</p></div>
+  <div class="item item-6 premium-item"><p>6. Content Writing.</p></div>
+  <div class="item item-7 basic-item premium-item"><p>7. Content Writing.</p></div>
+  <div class="item item-8 basic-item premium-item"><p>8. Content Writing.</p></div>
+  <div class="item item-9 basic-item premium-item"><p>9. Content Writing.</p></div>
+</div>  
+
+<div class="animation-container slides">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>  
+
+<div class="section-container-wrapper">
+  <div class="section-container">
+    <div class="section1">
+      <h1 class="text">Nova a new star is born</h1>
+    </div>
+    
+    <div class="section2">
+      <h1 class="text">Parralax</h1>
+    </div>  
+  </div>
+</div>
+
+
+
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import LoopNav from '../atoms/LoopNav.astro';
+const base = import.meta.env.PUBLIC_WP_URL;
+const response = await fetch(`${base}/wp-json/wp/v2/service`);
+const services = await response.json();
+const screen = "desktop";
+const locations = await fetch(`${base}/wp-json/wp/v2/menu-locations`).then(r => r.json());
+const headerMenuId = locations.header?.menu;
+const items = await fetch(`${base}/wp-json/wp/v2/menu-items?menus=${headerMenuId}&per_page=100&_embed=1`)
+  .then(r => r.json());
+
+const posts = [];
+for (const item of items) {
+    const post = await fetch(`${base}/wp-json/wp/v2/pages/${item.object_id}`)
+        .then(r => r.json());
+    posts.push(post);
+}
+--- 
+
+<nav id="navmenu-header-desktop" class="navmenu navmenu-desktop">
+  <LoopNav posts={posts} screen={screen} />
+  <div popover id={`megamenu-services-${screen}`} class="megamenu">
+    {services.map((service: any) => 
+        <li class="megamenu-item">
+            <a href={`/wordpress-pages/${service.slug}`}>{service.title.rendered}</a>
+        </li>
+    )}
+  </div>
+</nav>
+
