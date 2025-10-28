@@ -7,6 +7,8 @@
 @use './components/organisms/header' as *;
 @use './utilities/container-wrapper' as *;
 @use './plugins/theme-light-dark' as *;
+@use './layout' as *;
+@use './plugins/tool-kit' as *;
 
 
 
@@ -28,6 +30,16 @@ ul {
   margin: 0;
 }
 
+p::selection{
+  background-color: $gradient-3;
+  color: $contrast-color;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 .animation-container {

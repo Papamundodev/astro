@@ -1,11 +1,11 @@
 ---
 // Get site info from the main API endpoint (no auth required)
-const response = await fetch("http://move.local/wp-json/");
+const response = await fetch("http://move.local/wp-json/theme-base/v1/settings");
 const siteInfo = await response.json();
-const siteName = siteInfo.name || "My Site";
+const siteName = siteInfo.logo.url || "My Site";
 
 ---
 
 <a href="/">
-    <span class="logo">{siteName}</span>
+    <img src={siteName} alt="Logo" />
 </a>

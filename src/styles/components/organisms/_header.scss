@@ -2,53 +2,9 @@
 @use "../../utilities/_container-wrapper" as *;
 @use "../../components/atoms/burger" as *;
 @use "../../design-tokens/_fonts" as *;
+@use "../../utilities/animations" as *;
 
 
-/* ----- ANIMATIONS ----- */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes fade-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-out-left {
-
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-}
 /* ----- NAVBAR DESKTOP ----- */
 @media (width >= $breakpoint-md) {
     .navmenu-mobile {
@@ -67,6 +23,13 @@
 }
 
 /* ----- NAVBAR MOBILE ----- */
+
+.header-nav {
+  display: grid;
+  align-items: center;
+  gap: $spacer-vi-md; 
+  grid-template-rows: 100px;
+}
 
 @media (width <= $breakpoint-md) {
   .header-nav {
@@ -97,6 +60,9 @@
       transition: display 0.5s, opacity 0.5s;
       transition-behavior: allow-discrete;
       animation: fade-out 0.3s ease-out;  
+      .nav-menu-item, .megamenu-services-button{
+        margin-block-end: $spacer-vi-md;
+      }
     }
     #navmenu-header-mobile:popover-open {
       opacity: 1;
@@ -109,10 +75,7 @@
 
     .header-nav {
       display: grid;
-      grid-template-columns: $spacer-xxl 1fr auto;
-      align-items: center;
-      gap: $spacer-vi-md;
-      margin: $spacer-vi-sm;
+      grid-template-columns: auto 1fr auto;
     }
     .menu-container .burger-container {
       display: none;

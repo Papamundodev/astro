@@ -1,4 +1,73 @@
 ---
+// YouTube API configuration
+const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+const SYNTAX_PLAYLIST_ID = import.meta.env.YOUTUBE_SYNTAX_PLAYLIST_ID || '';
+const SHOPTALKSHOW_CHANNEL_ID = import.meta.env.YOUTUBE_SHOPTALKSHOW_CHANNEL_ID || '';
+const KEVIN_POWELL_CHANNEL_ID = import.meta.env.YOUTUBE_KEVIN_POWELL_CHANNEL_ID || '';
+
+// Function to fetch YouTube videos from a specific channel's playlist
+async function getYouTubeVideosFromPlaylist(playlistId = '') {
+  try {
+    const response = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/playlistItems?` +
+      `part=snippet&` +
+      `playlistId=${playlistId}&` +
+      `maxResults=10&` +
+      `key=${YOUTUBE_API_KEY}`,
+      {
+        headers: {
+          'Accept': 'application/json',
+        }
+      }
+    );
+
+    const data = await response.json();
+    const filteredVideos = (data.items || []).filter((video: any) => 
+        video.snippet.title !== 'Private video'
+        );
+    return filteredVideos || [];
+  } catch (error) {
+    console.error('Error fetching YouTube videos:', error);
+    return [];
+  }
+}
+
+async function getYouTubeVideosFromChannel(channelId = '') {
+  try {
+    const response = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?` +
+      `part=snippet&` +
+      `channelId=${channelId}&` +
+      `maxResults=10&` +
+      `key=${YOUTUBE_API_KEY}`,
+      {
+        headers: {
+          'Accept': 'application/json',
+        }
+      }
+    );
+
+    const data = await response.json();
+    const filteredVideos = (data.items || []).filter((video: any) => 
+        video.snippet.title !== 'Private video'
+        );
+    return filteredVideos || [];
+  } catch (error) {
+    console.error('Error fetching YouTube videos:', error);
+    return [];
+  }
+}
+
+// Fetch all YouTube videos at build time
+const [syntaxVideos, shoptalkshowVideos, kevinPowellVideos] = await Promise.all([
+  getYouTubeVideosFromPlaylist(SYNTAX_PLAYLIST_ID),
+  getYouTubeVideosFromChannel(SHOPTALKSHOW_CHANNEL_ID),
+  getYouTubeVideosFromChannel(KEVIN_POWELL_CHANNEL_ID)
+]);
+
+// const videos = [...syntaxVideos, ...shoptalkshowVideos, ...kevinPowellVideos].sort((a, b) => 
+//   new Date(b.snippet.publishedAt).getTime() - new Date(a.snippet.publishedAt).getTime()
+// ).slice(0, 9);
 // YouTube component to display videos passed as props
 const { videos = [] } = Astro.props;
 

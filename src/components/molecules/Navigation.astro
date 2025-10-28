@@ -1,8 +1,7 @@
 ---
 import LoopNav from '../atoms/LoopNav.astro';
+import MegamenuContent from '../atoms/MegamenuContent.astro';
 const base = import.meta.env.PUBLIC_WP_URL;
-const response = await fetch(`${base}/wp-json/wp/v2/service`);
-const services = await response.json();
 const screen = "desktop";
 const locations = await fetch(`${base}/wp-json/wp/v2/menu-locations`).then(r => r.json());
 const headerMenuId = locations.header?.menu;
@@ -19,12 +18,6 @@ for (const item of items) {
 
 <nav id="navmenu-header-desktop" class="navmenu navmenu-desktop">
   <LoopNav posts={posts} screen={screen} />
-  <div popover id={`megamenu-services-${screen}`} class="megamenu">
-    {services.map((service: any) => 
-        <li class="megamenu-item">
-            <a href={`/wordpress-pages/${service.slug}`}>{service.title.rendered}</a>
-        </li>
-    )}
-  </div>
+  <MegamenuContent screen={screen} />
 </nav>
 

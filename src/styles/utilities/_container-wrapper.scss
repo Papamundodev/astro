@@ -14,6 +14,17 @@ $breakpoints: (
   "xxl": $breakpoint-xxl,
 );
 
+$z-index-1: 1;
+$z-index-2: 2;
+$z-index-3: 3;
+$z-index-4: 4;
+$z-index-5: 5;
+$z-index-6: 6;
+$z-index-7: 7;
+$z-index-8: 8;
+$z-index-9: 9;
+$z-index-10: 10;
+
 /* ------- Spacer ------- */
 $spacer-xs: 5px;
 $spacer-sm: 10px;
@@ -45,7 +56,7 @@ $spacers: (
 
 /* ------- Wrapper ------- */
 
-$wrapper-padding-inline: $spacer-md;
+$wrapper-padding-inline: calc($spacer-vi-xxl * 1.5);
 
 
 
@@ -56,7 +67,7 @@ $wrapper-padding-inline: $spacer-md;
   width: 100%;
   @each $key, $value in $breakpoints {
     @media (width >= $value) and (width >= $breakpoint-sm) {
-      width: calc($value - $spacer-lg);
+      width: calc($value - $spacer-vi-xxl);
     }
   }
 }

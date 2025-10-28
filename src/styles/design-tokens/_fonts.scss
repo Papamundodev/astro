@@ -45,8 +45,8 @@ See post on fluid typo in my blog.
   $font-size-md: clamp(1.5625rem, 1.4844rem + 0.3906vi, 1.9531rem);
   $font-size-lg: clamp(1.9531rem, 1.8555rem + 0.4883vi, 2.4414rem);
   $font-size-xl: clamp(2.4414rem, 2.3193rem + 0.6104vi, 3.0518rem);
-  $font-size-xxl: clamp(3.0518rem, 2.8992rem + 0.7629vi, 3.8147rem);
-  $font-size-bg: clamp(4.7684rem, 4.53rem + 1.1921vi, 5.9605rem);
+  $font-size-xxl: clamp(5.0518rem, 5.8992rem + 0.7629vi, 6.8147rem);
+  $font-size-big: clamp(4.7684rem, 4.53rem + 1.1921vi, 5.9605rem);
   
   $nav-font-size: clamp(0.9rem, 0.75rem + 0.3vi, 1.3rem);
   $nav-font-size-mobile: 1.3rem;
@@ -59,7 +59,7 @@ See post on fluid typo in my blog.
     "lg": $font-size-lg,
     "xl": $font-size-xl,
     "xxl": $font-size-xxl,
-    "big": $font-size-bg,
+    "big": $font-size-big,
   );
   
   @each $key, $value in $font-sizes {

@@ -1,0 +1,43 @@
+@use "../design-tokens/colors" as *;
+@use "../utilities/container-wrapper" as *;
+@use "../utilities/animations" as *;
+
+
+.module-toolkit {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: 50px;
+  padding-block: 1em;
+  transform: translateY(-50%);
+  background-color: $primary-color-surface-3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacer-vi-xs;
+  border-radius: $spacer-vi-lg $spacer-vi-md $spacer-vi-md $spacer-vi-lg;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  z-index: $z-index-10;
+}
+
+.module-content {
+  background-color: $background-color;
+  position: fixed;
+  top: 85px;
+  right: auto;
+  width: 92.5vw;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  display: none;
+  z-index: $z-index-9;
+  transition: display 0.5s, opacity 0.5s;
+  transition-behavior: allow-discrete;
+  animation: fade-out 0.3s ease-out;  
+}
+.module-content:popover-open {
+  opacity: 1;
+  display: flex;
+  animation: fade-in 0.3s ease-out;
+}

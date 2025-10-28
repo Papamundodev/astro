@@ -1,26 +1,102 @@
 ---
 import Header from '../components/organisms/Header.astro';
 import Footer from '../components/Footer.astro';
+import ThemeIcon from '../components/atoms/ThemeIcon.astro';
+import LangIcon from '../icons/lang.svg';
+import DesignIcon from '../icons/design.svg';
 import '../styles/global.scss';
 const { pageTitle } = Astro.props;
 
 ---
 
 <html lang="en">
-  <head>
+  <head>  
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body  class="container" >
+    <div class="module-container">
+      <div popover id="module-content-design" class="module-content-design module-content">
+        <div class="animation-container">
+          <div><p>1. Branding Design.</p></div>
+          <div><p>2. Illustration.</p></div>
+          <div><p>3. Web Design.</p></div>
+          <div><p>4. Animation.</p></div>
+          <div><p>5. SEO.</p></div>
+          <div><p>6. Content Writing.</p></div>
+        </div>  
+        <div class="animation-2-container">
+          <div class="pack-container">
+            <div class="pack-basic-container">
+              <h3>Pack basic</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+            </div>
+            
+            <div class="pack-premium-container">
+              <h3>Pack premium</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+            </div>
+          </div>
+          <div class="item item-1 basic-item"><p>1. Branding Design.</p></div>
+          <div class="item item-2 premium-item"><p>2. Illustration.</p></div>
+          <div class="item item-3 basic-item"><p>3. Web Design.</p></div>
+          <div class="item item-4 premium-item"><p>4. Animation.</p></div>
+          <div class="item item-5 basic-item"><p>5. SEO.</p></div>
+          <div class="item item-6 premium-item"><p>6. Content Writing.</p></div>
+          <div class="item item-7 basic-item premium-item"><p>7. Content Writing.</p></div>
+          <div class="item item-8 basic-item premium-item"><p>8. Content Writing.</p></div>
+          <div class="item item-9 basic-item premium-item"><p>9. Content Writing.</p></div>
+        </div>  
+        <div class="animation-container slides">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>  
+        
+        <div class="section-container-wrapper">
+          <div class="section-container">
+            <div class="section1">
+              <h1 class="text">Nova a new star is born</h1>
+            </div>
+            
+            <div class="section2">
+              <h1 class="text">Parralax</h1>
+            </div>  
+          </div>
+        </div>
+      </div>
+      <div popover id="module-content-lang" class="module-content-lang module-content">
+        <nav>
+          <ul>
+            <li>désolé le dev à pas encore traduit le site en anglais</li>
+          </ul>
+        </nav>
+      </div> 
+    </div>
+ 
     <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
+    <h1 class="title-gradient">{pageTitle}</h1>
+    <div class="wrapper">
+      <slot />
+    </div>
+
+        <div class="module-toolkit">  
+          <button class="module-button-lang link-button" popovertarget="module-content-lang" id="module-menu-button-lang">  
+            <LangIcon name="lang" width={40} color="var(--primary-color)"/>
+          </button>
+          <div class="theme-container">
+            <ThemeIcon />
+          </div>
+          <button class="module-button-design link-button" popovertarget="module-content-design" id="module-menu-button-design">  
+            <DesignIcon name="design" width={40} color="var(--primary-color)"/>
+          </button>
+      </div>
+    </div>
     <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
   </body>
 </html>

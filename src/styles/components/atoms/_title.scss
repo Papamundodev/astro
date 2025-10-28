@@ -5,12 +5,22 @@
 
 @mixin text-heading-1 {
   font-family: $heading-font;
-  font-size: $font-size-lg;
+  font-size: $font-size-xxl;
   line-height: $line-height-heading;
   font-weight: $font-weight-700;
   letter-spacing: $letter-spacing-heading;
   text-wrap: balance;
   text-transform: capitalize;
+}
+
+@mixin logo {
+  font-family: $heading-font;
+  font-size: $font-size-xl;
+  line-height: $line-height-heading;
+  font-weight: $font-weight-400;
+  letter-spacing: $letter-spacing-paragraph;
+  text-wrap: balance;
+  text-transform: uppercase;
 }
 
 
@@ -34,8 +44,19 @@ h6 {
   background-position: 0 0;
   background-repeat: no-repeat;
   width: fit-content;
+  @include text-heading-1;
+  margin-block-end: $spacer-vi-xxl;
+  margin-inline: auto;
 }
 
-.logo {
-    @include text-heading-1;
+.logo-container {
+  a{
+    text-decoration: none;
+    .logo {
+      @include logo;
+  }
+  }
 }
+
+
+

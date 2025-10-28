@@ -4,11 +4,11 @@
 
 
 .nav-menu-item, .megamenu-services-button {
-  margin-block-end: $spacer-vi-sm;
+  border-radius: 5px;
   list-style: none;
   background-color: $primary-color;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
   button, a{
     padding: .5em 1em;
     width: 100%;
@@ -24,10 +24,12 @@
     text-decoration: none;
     position: relative;
     z-index: 10;
+    transition: color 0.6s ease-out;
   }
   &:hover {
     button, a{
       color: $primary-color;
+      transition: color 0.6s ease-out;
     }
   }
 }
